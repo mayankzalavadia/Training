@@ -1,0 +1,35 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Template;
+ * @var $viewModel \Training\HelloWorld\ViewModel\HelloWorld;
+ */
+$viewModel = $block->getViewModel();
+?>
+<p><?php echo $viewModel->getTitle('Test Title from View Model'); ?></p>
+<ul>
+    <li>
+        <?= $viewModel->getSupplierCode(); ?>
+    </li>
+</ul>
+<p>This is <?php echo $this->getSampleText(); ?> extension output.</p>
+
+<p><?= $viewModel->isLoggedIn() ? $viewModel->getCustomerData() : 'Mayank' ?></p>
+<?php if($viewModel->isLoggedIn()): ?>
+<div id="training-ko-example" data-bind="scope:'training-ko-example'">
+    <div data-bind="text:getCustomer()"></div>
+    <script type="text/x-magento-init">
+    {
+        "*": {
+            "Magento_Ui/js/core/app": {
+               "components": {
+                    "training-ko-example": {
+                        "component": "Training_HelloWorld/js/getCustomerData"
+                        }
+                    }
+                }
+            }
+    }
+    </script>
+</div>
+
+<?php endif; ?>

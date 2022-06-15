@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <preference for="Training\DI\Model\InjectableInterface" type="Training\DI\Model\Injectable"></preference>
+    <preference for="Training\DI\Model\NonInjectableInterface" type="Training\DI\Model\NonInjectable"></preference>
+    <type name="Training\DI\Model\FeatureProducts">
+        <arguments>
+            <argument name="featureBySales" xsi:type="object">Training\DI\Model\FeatureProducts\FeatureBySales\Proxy</argument>
+        </arguments>
+    </type>
+    <type name="Training\DI\Model\Main">
+        <arguments>
+            <argument name="abstractUtils" xsi:type="object">Training\DI\Model\Utils</argument>
+            <argument name="data" xsi:type="array">
+                <item name="id" xsi:type="string">Get XML Class Main</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="training_custom_field" type="Training\DI\Plugin\Checkout\LayoutProcessor" />
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="training_custom_field_plugin" sortOrder="100"
+                type="Training\DI\Plugin\Checkout\TrainingCustomField"/>
+    </type>
+</config>

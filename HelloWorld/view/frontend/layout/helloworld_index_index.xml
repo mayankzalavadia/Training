@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+<body>
+  <referenceContainer name="content">
+   <block class="Magento\Framework\View\Element\Template"
+          name="hello_world_block"
+          template="Training_HelloWorld::helloworld.phtml">
+      <arguments>
+          <argument name="view_model" xsi:type="object">Training\HelloWorld\ViewModel\HelloWorld</argument>
+          <argument name="cache_lifetime" xsi:type="number">3600</argument>
+      </arguments>
+   </block>
+  </referenceContainer>
+</body>
+</page>

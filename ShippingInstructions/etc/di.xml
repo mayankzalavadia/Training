@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="training_shipping_instructions_plugin" sortOrder="100"
+                type="Training\ShippingInstructions\Plugin\Checkout\ShippingInstructions"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\ToOrderAddress">
+        <plugin name="training_shipping_instructions_to_order_address_plugin" sortOrder="100"
+                type="Training\ShippingInstructions\Plugin\Checkout\Quote\Address\ToOrderAddress"/>
+    </type>
+    <!--<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="training_shipping_instructions_layout_processor" type="Training\ShippingInstructions\Plugin\Checkout\LayoutProcessor" />
+    </type>-->
+</config>

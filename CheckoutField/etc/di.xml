@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+    <type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
+        <plugin name="checkout_custom_field" type="Training\CheckoutField\Plugin\Checkout\LayoutProcessor" />
+    </type>
+    <type name="Magento\Checkout\Model\ShippingInformationManagement">
+        <plugin name="training_custom_field_plugin" sortOrder="100"
+                type="Training\CheckoutField\Plugin\Checkout\TrainingCustomField"/>
+    </type>
+    <type name="Magento\Quote\Model\Quote\Address\ToOrderAddress">
+        <plugin name="training_custom_field_plugin" sortOrder="100"
+                type="Training\CheckoutField\Plugin\Checkout\Quote\Address\ToOrderAddress"/>
+    </type>
+</config>

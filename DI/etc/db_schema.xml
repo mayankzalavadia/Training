@@ -1,0 +1,17 @@
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+
+<table name="sales_order_address" resource="default" engine="innodb">
+    <column xsi:type="varchar" name="training_custom_field" nullable="true" length="255" comment="Training Custom Field"/>
+</table>
+<table name="quote_address" resource="default" engine="innodb">
+    <column xsi:type="varchar" name="training_custom_field" nullable="true" length="255" comment="Training Custom Field"/>
+</table>
+<table name="quote" resource="default" engine="innodb">
+    <column xsi:type="varchar" name="training_custom_field" nullable="true" length="255" comment="Training Custom Field"/>
+</table>
+<table name="sales_order" resource="default" engine="innodb">
+    <column xsi:type="varchar" name="training_custom_field" nullable="true" length="255" comment="Training Custom Field"/>
+</table>
+
+</schema>

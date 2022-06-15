@@ -1,0 +1,27 @@
+<?php /** @var \Magento\Framework\View\Element\Template $block */ ?>
+
+<h3>This is Training DI extension output.</h3>
+<ul>
+    <?php foreach ($block->getViewModel()->getFeatureProducts() as $sku): ?>
+    <li><?= $sku ?></li>
+    <?php endforeach; ?>
+
+</ul>
+
+<p>
+    Class Main Id is: <?= $block->getMain()->getId(); ?>
+</p>
+
+<p>
+    Class Injectable Id is: <?= $block->getMain()->getInjectable()->getId(); ?>
+</p>
+
+<p>
+    Class NonInjectable Id is: <?= $block->getMain()->getNonInjectable()->getId(); ?>
+</p>
+
+<p>
+    Class Utils Id is: <?= $block->getMain()->getUtils()->getName(); ?>
+</p>
+
+

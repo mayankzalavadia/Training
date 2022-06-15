@@ -1,0 +1,9 @@
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Training\HelloWorld\Api\SupplierRepositoryInterface" type="Training\HelloWorld\Model\SupplierRepository"/>
+    <preference for="Training\HelloWorld\Api\Data\SupplierInterface" type="Training\HelloWorld\Model\Supplier"/>
+    <type name="Training\HelloWorld\Api\SupplierRepositoryInterface">
+        <arguments>
+            <argument name="codeValidation" xsi:type="object">Training\HelloWorld\Model\CodeLengthValidate</argument>
+        </arguments>
+    </type>
+</config>
