@@ -1,0 +1,23 @@
+<?php
+/**
+ * @var $block \Magento\Framework\View\Element\Template;
+ * @var $viewModel \Training\CustomData\ViewModel\HelloWorld;
+ */
+$viewModel = $block->getViewModel();
+?>
+<?php
+$collection = $viewModel->getCollection();
+foreach ($collection as $item){ ?>
+    <?= $item->getId().'</br>'; ?>
+
+<?php
+}
+?>
+<?php
+$itemData = $viewModel->loadById(1);
+?>
+<?= $itemData->getId(); ?>
+<?= $itemData->getCustomFieldOne(); ?>
+<?= $itemData->getCustomFieldTow(); ?>
+
+
