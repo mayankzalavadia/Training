@@ -29,10 +29,9 @@ class CustomDataCollection implements CustomDataInterface
     }
 
     /**
-     * @param $id
-     * @return array|object
+     * @inheritDoc
      */
-    public function loadById($id): array|object
+    public function loadById($id): object|string
     {
         return $this->helloWorldFactory->create()->load($id);
     }
