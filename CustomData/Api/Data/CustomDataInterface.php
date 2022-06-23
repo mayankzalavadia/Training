@@ -12,10 +12,10 @@ interface CustomDataInterface
     public function getCollection():object|bool|string;
 
     /**
-     * @param $id
-     * @return array|object|bool|string
+     * @param string|int $id
+     * @return object|string
      */
-    public function loadById($id):array|object|bool|string;
+    public function loadById($id):object|string;
 
 
 }

@@ -4,17 +4,10 @@
 namespace Training\CustomData\Api;
 
 
-interface LoadByIDInterface
-{
-    /**
-     * @return object|bool|string
-     */
-    public function getCollection():object|bool|string;
+use Training\CustomData\Api\Data\CustomDataInterface;
 
-    /**
-     * @param string $id
-     * @return object|string
-     */
-    public function loadById($id):object|string;
+interface LoadByIDInterface extends CustomDataInterface
+{
+
 
 }
