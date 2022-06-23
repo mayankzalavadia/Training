@@ -1,5 +1,37 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
     <preference for="Training\CustomData\Api\Data\CustomDataInterface" type="Training\CustomData\Model\CustomDataCollection"/>
     <preference for="Training\CustomData\Api\LoadByIDInterface" type="Training\CustomData\Model\Api\LoadByIDInterface"/>
-
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="custom_data_listing_data_source" xsi:type="string">Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult</item>
+                <item name="custom_product_data_listing_data_source" xsi:type="string">CustomProductData</item>
+                <item name="custom_order_data_listing_data_source" xsi:type="string">CustomOrderData</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">training_customdata</argument>
+            <argument name="resourceModel" xsi:type="string">Training\CustomData\Model\ResourceModel\HelloWorld</argument>
+        </arguments>
+    </type>
+    <virtualType name="CustomProductData" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">catalog_product_entity</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Catalog\Model\ResourceModel\Product</argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="CustomOrderData" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">sales_order</argument>
+            <argument name="resourceModel" xsi:type="string">Magento\Sales\Model\ResourceModel\Order</argument>
+        </arguments>
+    </virtualType>
+    <!--<virtualType name="Training\CustomData\Model\ResourceModel\HelloWorld\Grid\Collection" type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">training_customdata</argument>
+            <argument name="resourceModel" xsi:type="string">Training\CustomData\Model\ResourceModel\HelloWorld</argument>
+        </arguments>
+    </virtualType>-->
 </config>
