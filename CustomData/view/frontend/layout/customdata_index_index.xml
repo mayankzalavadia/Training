@@ -1,14 +1,22 @@
 <?xml version="1.0"?>
-<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
-<body>
-  <referenceContainer name="content">
-   <block class="Magento\Framework\View\Element\Template"
-          name="hello_world_block"
-          template="Training_CustomData::helloworld.phtml">
-      <arguments>
-          <argument name="view_model" xsi:type="object">Training\CustomData\ViewModel\HelloWorld</argument>
-      </arguments>
-   </block>
-  </referenceContainer>
-</body>
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="1column"
+      xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <head>
+        <css src="Training_CustomData::css/backend.css"/>
+    </head>
+    <body>
+        <referenceContainer name="content">
+            <uiComponent name="ui_listing"/>
+            <block class="Magento\Framework\View\Element\Template"
+                   name="hello_world_block"
+                   template="Training_CustomData::helloworld.phtml">
+                <arguments>
+                    <argument name="view_model" xsi:type="object">Training\CustomData\ViewModel\HelloWorld</argument>
+                </arguments>
+            </block>
+            <uiComponent name="custom_product_ui_listing"/>
+            <uiComponent name="custom_order_ui_listing"/>
+            <uiComponent name="ui_form"/>
+        </referenceContainer>
+    </body>
 </page>

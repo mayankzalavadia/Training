@@ -8,7 +8,11 @@ $viewModel = $block->getViewModel();
 <?php
 $collection = $viewModel->getCollection();
 foreach ($collection as $item){ ?>
-    <?= $item->getId().'</br>'; ?>
+    <?php if($item->getId() <= 4) { ?>
+        <?= $item->getId(); ?>
+        <?= $item->getCustomFieldOne(); ?>
+        <?= $item->getCustomFieldTwo().'</br>'; ?>
+    <?php } ?>
 
 <?php
 }
@@ -18,6 +22,6 @@ $itemData = $viewModel->loadById(1);
 ?>
 <?= $itemData->getId(); ?>
 <?= $itemData->getCustomFieldOne(); ?>
-<?= $itemData->getCustomFieldTow(); ?>
+<?= $itemData->getCustomFieldTwo(); ?>
 
 
