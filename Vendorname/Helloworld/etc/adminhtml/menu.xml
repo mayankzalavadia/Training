@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Vendorname_Helloworld::manager" title="Helloworld" module="Vendorname_Helloworld" sortOrder="10" resource="Vendorname_Helloworld::manager" />
+        <add id="Vendorname_Helloworld::uploader" title="Helloworld Menu" module="Vendorname_Helloworld" sortOrder="0" parent="Vendorname_Helloworld::manager" action="helloworld/index/index" resource="Vendorname_Helloworld::employee" />
+    </menu>
+</config>
