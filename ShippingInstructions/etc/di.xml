@@ -11,4 +11,7 @@
     <!--<type name="Magento\Checkout\Block\Checkout\LayoutProcessor">
         <plugin name="training_shipping_instructions_layout_processor" type="Training\ShippingInstructions\Plugin\Checkout\LayoutProcessor" />
     </type>-->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <plugin name="sales_order_shipping_instructions" type="Training\ShippingInstructions\Plugin\Checkout\SalesOrderShippingInstructions" sortOrder="10" disabled="false" />
+    </type>
 </config>
