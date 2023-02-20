@@ -1,0 +1,10 @@
+type Query {
+    getRecords : [getAllRecords] @resolver( class: "Devhooks\\HelloWorld\\Model\\Resolver\\HelloWorldRecords") @doc(description: "Get All  Records")
+}
+
+type getAllRecords {
+    id : Int  @doc(description: "Primary Id"),
+    fname : String  @doc(description: "First Name"),
+    lname : String  @doc(description: "Last Name"),
+    status : Int  @doc(description: "Status"),
+}

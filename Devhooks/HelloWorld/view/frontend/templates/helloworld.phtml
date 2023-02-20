@@ -1,0 +1,12 @@
+<?php
+
+/** @var $viewModel \Devhooks\HelloWorld\ViewModel\MyNewViewModel */
+
+$viewModel = $this->getViewModel();
+
+?>
+<?php if($viewModel->getConfigIsEnable()): ?>
+<h3>This is <?php echo $this->getSampleText(); ?> extension output.</h3>
+<?php endif; ?>
+<p><?php echo $viewModel->getConfigDisplayText(); ?></p>
+
