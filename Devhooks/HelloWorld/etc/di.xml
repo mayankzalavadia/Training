@@ -13,4 +13,6 @@
             <argument name="resourceModel" xsi:type="string">Devhooks\HelloWorld\Model\ResourceModel\HelloWorld</argument>
         </arguments>
     </virtualType>
+    <!-- Custom API-->
+    <preference for="Devhooks\HelloWorld\Api\HelloWorldCollectionInterface" type="Devhooks\HelloWorld\Model\Api\HelloWorldCollectionRepository"/>
 </config>

@@ -10,3 +10,30 @@ $viewModel = $this->getViewModel();
 <?php endif; ?>
 <p><?php echo $viewModel->getConfigDisplayText(); ?></p>
 
+<?php
+echo "<b>getModelFactoryCollection</b></br>";
+foreach ($this->getModelFactoryCollection() as $factoryCollection){
+    echo $factoryCollection->getfname(). "</br>";
+}
+
+
+echo "<b>getModelCollection</b><br>";
+foreach ($this->getModelCollection() as $modelCollection){
+    echo $modelCollection->getfname(). "</br>";
+}
+echo "<b>getRecordbyID</b><br>";
+$singleData = $this->getRecordbyID(1);
+echo $singleData->getFname()."</br>";
+
+echo "<b>getRecourceCollection</b></br>";
+$getRecourceCollection = $this->getRecourceCollection();
+foreach ($getRecourceCollection as $rcollection){
+    echo $rcollection->getfname(). "</br>";
+}
+
+echo "<b>getResourceCollectionFilter</b><br>";
+$getResourceCollectionFilter = $this->getResourceCollectionFilter(1);
+echo $getResourceCollectionFilter->getFname()."</br>";
+//var_dump($this->getResourceCollectionFilter(1)->getData());
+
+?>
