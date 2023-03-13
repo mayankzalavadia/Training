@@ -6,4 +6,16 @@
             <resource ref="anonymous"/>
         </resources>
     </route>
+    <route url="/V1/helloworld/:id" method="GET">
+        <service class="Devhooks\HelloWorld\Api\HelloWorldRepositoryInterface" method="get" />
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
+    <route url="/V1/helloworld" method="GET">
+        <service class="Devhooks\HelloWorld\Api\HelloWorldRepositoryInterface" method="getList"/>
+        <resources>
+            <resource ref="anonymous"/>
+        </resources>
+    </route>
 </routes>

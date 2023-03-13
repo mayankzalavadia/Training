@@ -2,7 +2,7 @@
 
 namespace Devhooks\HelloWorld\Controller\Adminhtml\Index;
 
-use Devhooks\HelloWorld\Model\HelloWorldFactory;
+use Devhooks\HelloWorld\Api\HelloWorldRepositoryInterface;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
@@ -10,15 +10,15 @@ use Magento\Framework\View\Result\PageFactory;
 class Delete extends Action
 {
     protected $resultPageFactory;
-    protected $HelloWorldFactory;
+    private HelloWorldRepositoryInterface $helloWorldRepository;
 
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
-        HelloWorldFactory $HelloWorldFactory
+        HelloWorldRepositoryInterface $helloWorldRepository
     ) {
         $this->resultPageFactory = $resultPageFactory;
-        $this->HelloWorldFactory = $HelloWorldFactory;
+        $this->helloWorldRepository = $helloWorldRepository;
         parent::__construct($context);
     }
 
@@ -28,9 +28,9 @@ class Delete extends Action
         try {
             $id = $this->getRequest()->getParam('id');
             if ($id) {
-                $model = $this->HelloWorldFactory->create()->load($id);
-                if ($model->getId()) {
-                    $model->delete();
+                $model = $this->helloWorldRepository->get($id);
+                if ($model->getData()) {
+                    $this->helloWorldRepository->deleteById($id);
                     $this->messageManager->addSuccessMessage(__("Record Delete Successfully."));
                 } else {
                     $this->messageManager->addErrorMessage(__("Something went wrong, Please try again."));

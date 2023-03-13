@@ -1,5 +1,7 @@
 <?php
+
 namespace Devhooks\HelloWorld\Api;
+
 interface HelloWorldCollectionInterface
 {
     /**
@@ -7,4 +9,5 @@ interface HelloWorldCollectionInterface
      * @return string
      */
     public function getRecords();
+
 }

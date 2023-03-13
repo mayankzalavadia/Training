@@ -2,6 +2,8 @@
 
 namespace Devhooks\HelloWorld\Controller\Adminhtml\Index;
 
+use Devhooks\HelloWorld\Api\Data\HelloWorldInterfaceFactory;
+use Devhooks\HelloWorld\Api\HelloWorldRepositoryInterface;
 use Devhooks\HelloWorld\Model\HelloWorldFactory;
 use Magento\Backend\App\Action;
 use Magento\Backend\App\Action\Context;
@@ -11,15 +13,22 @@ use Magento\Framework\View\Result\PageFactory;
 class Save extends Action
 {
 
+    private HelloWorldInterfaceFactory $helloWorldInterfaceFactory;
+    private HelloWorldRepositoryInterface $helloWorldRepository;
+
     public function __construct(
         Context $context,
         PageFactory $resultPageFactory,
         HelloWorldFactory $HelloWorldFactory,
+        HelloWorldInterfaceFactory $helloWorldInterfaceFactory,
+        HelloWorldRepositoryInterface $helloWorldRepository,
         Validator $formKeyValidator
     ) {
         $this->resultPageFactory = $resultPageFactory;
         $this->HelloWorldFactory = $HelloWorldFactory;
         $this->formKeyValidator = $formKeyValidator;
+        $this->helloWorldInterfaceFactory = $helloWorldInterfaceFactory;
+        $this->helloWorldRepository = $helloWorldRepository;
         parent::__construct($context);
     }
     public function execute()
@@ -32,8 +41,9 @@ class Save extends Action
         $data = $this->getRequest()->getPostValue();
         try {
             if ($data) {
-                $model = $this->HelloWorldFactory->create();
-                $model->setData($data)->save();
+                $model = $this->helloWorldInterfaceFactory->create();
+                $model->setData($data);
+                $this->helloWorldRepository->save($model);
                 $this->messageManager->addSuccessMessage(__("Data Saved Successfully."));
                 $buttondata = $this->getRequest()->getParam('back');
                 if ($buttondata == 'add') {

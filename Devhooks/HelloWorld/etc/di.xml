@@ -15,4 +15,8 @@
     </virtualType>
     <!-- Custom API-->
     <preference for="Devhooks\HelloWorld\Api\HelloWorldCollectionInterface" type="Devhooks\HelloWorld\Model\Api\HelloWorldCollectionRepository"/>
+    <!-- Custom API-->
+    <preference for="Devhooks\HelloWorld\Api\HelloWorldRepositoryInterface" type="Devhooks\HelloWorld\Model\HelloWorldRepository"/>
+    <preference for="Devhooks\HelloWorld\Api\Data\HelloWorldInterface" type="Devhooks\HelloWorld\Model\HelloWorld"/>
+    <preference for="Devhooks\HelloWorld\Api\Data\HelloWorldSearchResultsInterface" type="Magento\Framework\Api\SearchResults"/>
 </config>

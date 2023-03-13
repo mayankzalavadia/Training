@@ -1,8 +1,9 @@
 <?php
+
 namespace Devhooks\HelloWorld\Block;
 
-use Devhooks\HelloWorld\Model\HelloWorldFactory;
 use Devhooks\HelloWorld\Model\HelloWorld as HelloWorldCollection;
+use Devhooks\HelloWorld\Model\HelloWorldFactory;
 use Devhooks\HelloWorld\Model\ResourceModel\HelloWorld\Collection;
 use Magento\Framework\View\Element\Template;
 use Magento\Framework\View\Element\Template\Context;
@@ -14,11 +15,12 @@ class HelloWorld extends Template
     private HelloWorldCollection $helloWorld;
     private Collection $helloworldCollection;
 
-    public function __construct(Context $context,
-                                HelloWorldFactory $helloWorldFactory,
-                                HelloWorldCollection $helloWorld,
-                                Collection $helloworldCollection,
-                                array $data = [])
+    public function __construct(
+        Context              $context,
+        HelloWorldFactory    $helloWorldFactory,
+        HelloWorldCollection $helloWorld,
+        Collection           $helloworldCollection,
+        array                $data = [])
     {
         $this->helloWorldFactory = $helloWorldFactory;
         $this->helloWorld = $helloWorld;
@@ -54,11 +56,13 @@ class HelloWorld extends Template
         return $collection;
     }
 
-    public function getRecourceCollection(){
+    public function getRecourceCollection()
+    {
         return $this->helloworldCollection;
     }
 
-    public function getResourceCollectionFilter($id){
+    public function getResourceCollectionFilter($id)
+    {
         return $this->helloworldCollection->addFieldToFilter('id', $id)->getFirstItem();;
     }
 

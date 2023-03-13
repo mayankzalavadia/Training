@@ -24,11 +24,11 @@ interface HelloWorldRepositoryInterface
     /**
      * Retrieve HelloWorld
      *
-     * @param int $Id
+     * @param int $id
      * @return HelloWorldInterface
      * @throws LocalizedException
      */
-    public function get(int $Id);
+    public function get(int $id);
 
     /**
      * Retrieve HelloWorld matching the specified criteria.
@@ -55,19 +55,19 @@ interface HelloWorldRepositoryInterface
     /**
      * Delete HelloWorld by ID
      *
-     * @param int $Id
+     * @param int $id
      * @return bool true on success
      * @throws NoSuchEntityException
      * @throws LocalizedException
      */
-    public function deleteById(int $Id);
+    public function deleteById(int $id);
 
     /**
      * Get HelloWorld by ID
      *
-     * @param int $Id
+     * @param int $id
      * @return mixed
      */
-    public function getById(int $Id);
+    public function getById(int $id);
 
 }

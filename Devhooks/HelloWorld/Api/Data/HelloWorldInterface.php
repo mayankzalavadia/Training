@@ -4,20 +4,19 @@ declare(strict_types=1);
 
 namespace Devhooks\HelloWorld\Api\Data;
 
-use Magento\Tests\NamingConvention\true\bool;
-
 interface HelloWorldInterface
 {
 
     const ID = 'id';
     const FNAME = 'fname';
     const LNAME = 'lname';
+
     const STATUS = 'status';
 
     /**
      * @return int
      */
-    public function getId():int;
+    public function getId();
 
     /**
      * @param int $id
@@ -28,7 +27,7 @@ interface HelloWorldInterface
     /**
      * @return string
      */
-    public function getFname():string;
+    public function getFname();
 
     /**
      * @param string $fname
@@ -39,7 +38,7 @@ interface HelloWorldInterface
     /**
      * @return string
      */
-    public function getLname():string;
+    public function getLname();
 
     /**
      * @param string $lname
@@ -48,9 +47,9 @@ interface HelloWorldInterface
     public function setLname($lname);
 
     /**
-     * @return bool
+     * @return int
      */
-    public function getStatus():bool;
+    public function getStatus();
 
     /**
      * @param bool $status

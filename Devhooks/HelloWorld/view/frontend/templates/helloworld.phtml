@@ -36,4 +36,14 @@ $getResourceCollectionFilter = $this->getResourceCollectionFilter(1);
 echo $getResourceCollectionFilter->getFname()."</br>";
 //var_dump($this->getResourceCollectionFilter(1)->getData());
 
+
+echo "<b>getRecords Using getList Repository</b><br>";
+$getRecords = $viewModel->getRecords();
+foreach ($getRecords as $record){
+    echo $record->getfname(). "</br>";
+    var_dump($record->getData());
+
+}
+//var_dump($getRecords);
+
 ?>
