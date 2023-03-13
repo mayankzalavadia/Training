@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Krish_Training::training" title="Krish" module="Krish_Training" sortOrder="10"
+             resource="Krish_Training::training"/>
+        <add id="Krish_Training::grid" title="Manage Grid" module="Krish_Training" sortOrder="10"
+             action="training/index/index" resource="Krish_Training::grid" parent="Krish_Training::training"/>
+    </menu>
+</config>

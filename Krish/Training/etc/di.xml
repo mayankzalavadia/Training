@@ -1,0 +1,25 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Krish\Training\Api\Data\TrainingInterface" type="Krish\Training\Model\Training"/>
+    <preference for="Krish\Training\Api\Data\TrainingSearchResultsInterface"
+                type="Magento\Framework\Api\SearchResultsInterface"/>
+    <preference for="Krish\Training\Api\TrainingRepositoryInterface" type="Krish\Training\Model\TrainingRepository"/>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="krish_training_listing_data_source" xsi:type="string">
+                    Krish\Training\Model\ResourceModel\Training\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <virtualType name="Krish\Training\Model\ResourceModel\Training\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">krish_training</argument>
+            <argument name="resourceModel" xsi:type="string">Krish\Training\Model\ResourceModel\Training</argument>
+        </arguments>
+    </virtualType>
+</config>

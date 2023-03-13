@@ -1,0 +1,35 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magento, Inc. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <table name="krish_training" resource="default" engine="innodb" comment="Krish Training Table">
+        <column xsi:type="int" name="id" unsigned="true" nullable="false" identity="true"
+                comment="ID"/>
+        <column xsi:type="varchar" name="first_name" nullable="false" length="32" comment="First Name"/>
+        <column xsi:type="varchar" name="last_name" nullable="false" length="32" comment="Last Name"/>
+        <column xsi:type="varchar" name="sku" nullable="false" length="64" comment="SKU" disabled="true"/>
+        <column xsi:type="smallint" name="status" unsigned="false" nullable="false" identity="false"
+                default="0" comment="Status Enble/Disable"/>
+        <column xsi:type="timestamp" name="created_at" on_update="false" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Creation Time"/>
+        <column xsi:type="timestamp" name="updated_at" on_update="true" nullable="false" default="CURRENT_TIMESTAMP"
+                comment="Update Time"/>
+        <constraint xsi:type="primary" referenceId="PRIMARY">
+            <column name="id"/>
+        </constraint>
+        <!--<constraint xsi:type="foreign" referenceId="KRISH_TRAINING_SKU_CATALOG_PRODUCT_ENTITY_SKU"
+                    table="krish_training" column="sku" referenceTable="catalog_product_entity"
+                    referenceColumn="sku" onDelete="CASCADE"/>-->
+        <index referenceId="KRISH_TRAINING_FIRST_NAME" indexType="btree">
+            <column name="first_name"/>
+        </index>
+        <index referenceId="KRISH_TRAINING_LAST_NAME" indexType="btree">
+            <column name="last_name"/>
+        </index>
+    </table>
+</schema>
