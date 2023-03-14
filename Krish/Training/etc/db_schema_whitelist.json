@@ -11,7 +11,9 @@
         },
         "index": {
             "KRISH_TRAINING_FIRST_NAME": true,
-            "KRISH_TRAINING_LAST_NAME": true
+            "KRISH_TRAINING_LAST_NAME": true,
+            "KRISH_TRAINING_FIRST_NAME_LAST_NAME": true,
+            "KRISH_TRAINING_ID_FIRST_NAME_LAST_NAME": true
         },
         "constraint": {
             "PRIMARY": true,

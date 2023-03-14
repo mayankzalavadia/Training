@@ -47,6 +47,8 @@
                     </item>
                 </argument>
             </filters>
+            <filterSearch name="fulltext"/>
+            <paging name="listing_paging"/>
             <massaction name="listing_massaction"
                         component="Magento_Ui/js/grid/tree-massactions"
                         class="\Magento\Catalog\Ui\Component\Product\MassAction">
@@ -84,7 +86,6 @@
                     </settings>
                 </action>
             </massaction>
-            <paging name="listing_paging"/>
         </listingToolbar>
     </listing>
     <columns name="columns">
@@ -145,6 +146,18 @@
                     <item name="filter" xsi:type="string">textRange</item>
                     <item name="sorting" xsi:type="string">asc</item>
                     <item name="label" xsi:type="string" translate="true">ID</item>
+                    <item name="sortOrder" xsi:type="number">10</item>
+                </item>
+            </argument>
+        </column>
+        <column name="full_name">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">text</item>
+                    <item name="dataType" xsi:type="string">select</item>
+                    <item name="label" xsi:type="string" translate="true">Full Name</item>
+                    <item name="sortOrder" xsi:type="number">20</item>
+
                 </item>
             </argument>
         </column>
@@ -159,6 +172,7 @@
                     </item>
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">First Name</item>
+                    <item name="sortOrder" xsi:type="number">30</item>
                 </item>
             </argument>
         </column>
@@ -170,6 +184,25 @@
                     </item>
                     <item name="filter" xsi:type="string">text</item>
                     <item name="label" xsi:type="string" translate="true">Last Name</item>
+                    <item name="sortOrder" xsi:type="number">40</item>
+                </item>
+            </argument>
+        </column>
+        <column name="created_at">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="label" xsi:type="string" translate="true">Created At</item>
+                    <item name="sortOrder" xsi:type="number">50</item>
+                </item>
+            </argument>
+        </column>
+        <column name="updated_at">
+            <argument name="data" xsi:type="array">
+                <item name="config" xsi:type="array">
+                    <item name="filter" xsi:type="string">dateRange</item>
+                    <item name="label" xsi:type="string" translate="true">Updated At</item>
+                    <item name="sortOrder" xsi:type="number">60</item>
                 </item>
             </argument>
         </column>
@@ -181,6 +214,7 @@
                     <item name="component" xsi:type="string">Magento_Ui/js/grid/columns/select</item>
                     <item name="dataType" xsi:type="string">select</item>
                     <item name="label" translate="true" xsi:type="string">Status</item>
+                    <item name="sortOrder" xsi:type="number">70</item>
                 </item>
             </argument>
         </column>
@@ -188,6 +222,7 @@
             <argument name="data" xsi:type="array">
                 <item name="config" xsi:type="array">
                     <item name="indexField" xsi:type="string">id</item>
+                    <item name="sortOrder" xsi:type="number">80</item>
                 </item>
             </argument>
         </actionsColumn>

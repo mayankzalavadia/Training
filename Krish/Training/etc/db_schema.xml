@@ -25,10 +25,8 @@
         <!--<constraint xsi:type="foreign" referenceId="KRISH_TRAINING_SKU_CATALOG_PRODUCT_ENTITY_SKU"
                     table="krish_training" column="sku" referenceTable="catalog_product_entity"
                     referenceColumn="sku" onDelete="CASCADE"/>-->
-        <index referenceId="KRISH_TRAINING_FIRST_NAME" indexType="btree">
+        <index referenceId="KRISH_TRAINING_ID_FIRST_NAME_LAST_NAME" indexType="fulltext">
             <column name="first_name"/>
-        </index>
-        <index referenceId="KRISH_TRAINING_LAST_NAME" indexType="btree">
             <column name="last_name"/>
         </index>
     </table>
