@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference for="Vendor\EntityModelRepository\Api\MyEntityRepositoryInterface" type="Vendor\EntityModelRepository\Model\MyEntityRepository" />
+    <preference for="Vendor\EntityModelRepository\Api\Data\MyEntityInterface" type="Vendor\EntityModelRepository\Model\MyEntityModel" />
+    <preference for="Vendor\EntityModelRepository\Api\Data\MyEntitySearchResultInterface" type="Vendor\EntityModelRepository\Model\MyEntitySearchResult" />
+</config>
