@@ -2,16 +2,19 @@
 
 namespace Vendor\EntityModelRepository\Controller\Index;
 
+use Vendor\EntityModelRepository\Api\Data\MyEntityInterface;
+use Vendor\EntityModelRepository\Api\Data\MyEntityInterfaceFactory;
 use Vendor\EntityModelRepository\Api\MyEntityRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaBuilder;
 use Magento\Framework\App\Action\HttpGetActionInterface;
 use Magento\Framework\Controller\Result\JsonFactory;
 
-class Index implements HttpGetActionInterface
+class Save implements HttpGetActionInterface
 {
     private JsonFactory $jsonFactory;
     private MyEntityRepositoryInterface $myEntityRepositoryInterface;
     private SearchCriteriaBuilder $searchCriteriaBuilder;
+    private MyEntityInterfaceFactory $myEntityInterface;
 
     /**
      * JsonResponse constructor.
@@ -19,16 +22,19 @@ class Index implements HttpGetActionInterface
      * @param JsonFactory $jsonFactory
      * @param MyEntityRepositoryInterface $myEntityRepositoryInterface
      * @param SearchCriteriaBuilder $searchCriteriaBuilder
+     * @param MyEntityInterfaceFactory $myEntityInterface
      */
     public function __construct(
         JsonFactory                 $jsonFactory,
         MyEntityRepositoryInterface $myEntityRepositoryInterface,
-        SearchCriteriaBuilder       $searchCriteriaBuilder
+        SearchCriteriaBuilder       $searchCriteriaBuilder,
+        MyEntityInterfaceFactory $myEntityInterface
     )
     {
         $this->jsonFactory = $jsonFactory;
         $this->myEntityRepositoryInterface = $myEntityRepositoryInterface;
         $this->searchCriteriaBuilder = $searchCriteriaBuilder;
+        $this->myEntityInterface = $myEntityInterface;
     }
 
     /**
@@ -36,6 +42,12 @@ class Index implements HttpGetActionInterface
      */
     public function execute()
     {
+        $myEntity = $this->myEntityInterface->create();
+        $myEntity->setData([
+            'first_name' => 'Mayank 5',
+            'last_name' => 'Zalavadia'
+        ]);
+        $this->myEntityRepositoryInterface->save($myEntity);
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $collection = $this->myEntityRepositoryInterface->getList($searchCriteria)->getItems();
         $resultJson = $this->jsonFactory->create();

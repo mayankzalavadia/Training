@@ -14,6 +14,8 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 class MyEntityRepository extends AbstractRepository implements MyEntityRepositoryInterface
 {
+    private MyEntityInterfaceFactory $MyEntityInterfaceFactory;
+
     /**
      * @param MyEntityInterfaceFactory $MyEntityInterfaceFactory
      * @param MyEntitySearchResultInterfaceFactory $searchResultFactory
