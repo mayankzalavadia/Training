@@ -43,10 +43,9 @@ class Save implements HttpGetActionInterface
     public function execute()
     {
         $myEntity = $this->myEntityInterface->create();
-        $myEntity->setData([
-            'first_name' => 'Mayank 5',
-            'last_name' => 'Zalavadia'
-        ]);
+        $myEntity->setData(
+            ['first_name' => 'Mayank '.rand(10,100), 'last_name' => 'Zalavadia']
+        );
         $this->myEntityRepositoryInterface->save($myEntity);
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $collection = $this->myEntityRepositoryInterface->getList($searchCriteria)->getItems();
