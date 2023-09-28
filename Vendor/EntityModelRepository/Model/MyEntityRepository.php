@@ -56,10 +56,28 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
     /**
      * @inheritDoc
      */
-    public function delete(MyEntityInterface $myEntity)
+    public function getById($entity_id)
     {
         $obj = $this->myEntityInterfaceFactory->create();
+        $this->myEntityResourceModel->load($obj, $entity_id);
+        return $obj;
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function delete(MyEntityInterface $myEntity)
+    {
         $this->myEntityResourceModel->delete($myEntity);
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function deleteById($entity_id)
+    {
+        $obj = $this->getById($entity_id);
+        $this->delete($obj);
     }
 
     /**
@@ -77,27 +95,5 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
         $collection->load();
 
         return $this->buildSearchResult($searchCriteria, $collection, $searchResults);
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function getById($entity_id)
-    {
-        $obj = $this->myEntityInterfaceFactory->create();
-        $this->myEntityResourceModel->load($obj, $entity_id);
-        if (! $obj->getId()) {
-            throw new NoSuchEntityException(__('Unable to find My Entity with ID "%1"', $entity_id));
-        }
-        return $obj;
-    }
-
-    /**
-     * @inheritDoc
-     */
-    public function deleteById($entity_id)
-    {
-        $obj = $this->getById($entity_id);
-        $this->delete($obj);
     }
 }
