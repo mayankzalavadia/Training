@@ -5,7 +5,6 @@ namespace Vendor\EntityModelRepository\Model;
 use Vendor\EntityModelRepository\Model\ResourceModel\MyEntityResourceModel;
 use Vendor\EntityModelRepository\Api\Data\MyEntityInterface;
 use Vendor\EntityModelRepository\Api\Data\MyEntityInterfaceFactory;
-use Vendor\EntityModelRepository\Api\Data\MyEntitySearchResultInterface;
 use Vendor\EntityModelRepository\Api\Data\MyEntitySearchResultInterfaceFactory;
 use Vendor\EntityModelRepository\Api\MyEntityRepositoryInterface;
 use Magento\Framework\Api\SearchCriteriaInterface;
@@ -14,22 +13,26 @@ use Magento\Framework\Exception\NoSuchEntityException;
 
 class MyEntityRepository extends AbstractRepository implements MyEntityRepositoryInterface
 {
-    private MyEntityInterfaceFactory $MyEntityInterfaceFactory;
+    private MyEntityInterfaceFactory $myEntityInterfaceFactory;
+    private MyEntityResourceModel $myEntityResourceModel;
 
     /**
-     * @param MyEntityInterfaceFactory $MyEntityInterfaceFactory
+     * @param MyEntityInterfaceFactory $myEntityInterfaceFactory
      * @param MyEntitySearchResultInterfaceFactory $searchResultFactory
      * @param ResourceModel\MyEntity\CollectionFactory $myEntityCollectionFactory
+     * @param MyEntityResourceModel $myEntityResourceModel
      */
     public function __construct(
-        MyEntityInterfaceFactory $MyEntityInterfaceFactory,
+        MyEntityInterfaceFactory $myEntityInterfaceFactory,
         MyEntitySearchResultInterfaceFactory $searchResultFactory,
-        ResourceModel\MyEntity\CollectionFactory $myEntityCollectionFactory
+        ResourceModel\MyEntity\CollectionFactory $myEntityCollectionFactory,
+        ResourceModel\MyEntityResourceModel $myEntityResourceModel
     )
     {
-        $this->MyEntityInterfaceFactory = $MyEntityInterfaceFactory;
+        $this->myEntityInterfaceFactory = $myEntityInterfaceFactory;
         $this->searchResultFactory = $searchResultFactory;
         $this->myEntityCollectionFactory = $myEntityCollectionFactory;
+        $this->myEntityResourceModel = $myEntityResourceModel;
     }
 
     /**
@@ -38,9 +41,9 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
     public function save(MyEntityInterface $myEntity)
     {
          try {
-             $obj = $this->MyEntityInterfaceFactory->create();
-             $obj->getResource()->load($obj, $myEntity->getEntityId());
-             $obj->getResource()->save($myEntity);
+             $obj = $this->myEntityInterfaceFactory->create();
+             $this->myEntityResourceModel->load($obj, $myEntity->getEntityId());
+             $this->myEntityResourceModel->save($myEntity);
         } catch (\Exception $exception) {
             throw new CouldNotSaveException(__(
                 'Could not save the offers: %1',
@@ -55,8 +58,8 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
      */
     public function delete(MyEntityInterface $myEntity)
     {
-        $obj = $this->MyEntityInterfaceFactory->create();
-        $obj->getResource()->delete($myEntity);
+        $obj = $this->myEntityInterfaceFactory->create();
+        $this->myEntityResourceModel->delete($myEntity);
     }
 
     /**
@@ -64,7 +67,7 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
      */
     public function getList(SearchCriteriaInterface $searchCriteria)
     {
-         $collection = $this->myEntityCollectionFactory->create();
+        $collection = $this->myEntityCollectionFactory->create();
         $searchResults = $this->searchResultFactory->create();
 
         $this->addFiltersToCollection($searchCriteria, $collection);
@@ -81,8 +84,8 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
      */
     public function getById($entity_id)
     {
-        $obj = $this->MyEntityInterfaceFactory->create();
-        $obj->getResource()->load($obj, $entity_id);
+        $obj = $this->myEntityInterfaceFactory->create();
+        $this->myEntityResourceModel->load($obj, $entity_id);
         if (! $obj->getId()) {
             throw new NoSuchEntityException(__('Unable to find My Entity with ID "%1"', $entity_id));
         }
@@ -95,6 +98,6 @@ class MyEntityRepository extends AbstractRepository implements MyEntityRepositor
     public function deleteById($entity_id)
     {
         $obj = $this->getById($entity_id);
-        $obj->delete();
+        $this->delete($obj);
     }
 }

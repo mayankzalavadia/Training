@@ -29,13 +29,10 @@ class InsertMultipleRecords implements HttpGetActionInterface
         $this->redirectFactory = $redirectFactory;
     }
 
-    /**
-     * Execute action and return JSON response.
-     */
     public function execute()
     {
         $tableName = $this->resource->getTableName('vendor_custom_table');
-        $data = ['first_name' => 'Mayank '.rand(10,100), 'last_name' => 'Zalavadia'];
+        $data = ['first_name' => 'Developer '.rand(10,100), 'last_name' => 'Test'];
         $this->connection->insertMultiple($tableName, $data);
         return $this->redirectFactory->create()->setPath('*/*/');
     }

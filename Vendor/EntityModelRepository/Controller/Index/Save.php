@@ -37,9 +37,6 @@ class Save implements HttpGetActionInterface
         $this->myEntityInterface = $myEntityInterface;
     }
 
-    /**
-     * Execute action and return JSON response.
-     */
     public function execute()
     {
         $myEntity = $this->myEntityInterface->create();

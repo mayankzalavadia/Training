@@ -42,9 +42,6 @@ class Update implements HttpGetActionInterface
         $this->request = $request;
     }
 
-    /**
-     * Execute action and return JSON response.
-     */
     public function execute()
     {
         $resultJson = $this->jsonFactory->create();

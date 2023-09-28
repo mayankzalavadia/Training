@@ -42,15 +42,12 @@ class Delete implements HttpGetActionInterface
         $this->request = $request;
     }
 
-    /**
-     * Execute action and return JSON response.
-     */
     public function execute()
     {
         $resultJson = $this->jsonFactory->create();
         $id = $this->request->getParam('id');
         if ($id != ''){
-        $myEntity = $this->myEntityRepositoryInterface->deleteById($id);
+        $this->myEntityRepositoryInterface->deleteById($id);
 
         $searchCriteria = $this->searchCriteriaBuilder->create();
         $collection = $this->myEntityRepositoryInterface->getList($searchCriteria)->getItems();
